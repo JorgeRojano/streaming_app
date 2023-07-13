@@ -1,0 +1,32 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 20px;
+}
+
+.filters {
+  flex: 1;
+}
+
+.movies {
+  flex: 2;
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.movie {
+  width: 250px;
+}
+
+.imgContainer{
+  flex:1;
+  height: 500px;
+  position: relative;
+}
+
+.img{
+  object-fit: cover;
+}
