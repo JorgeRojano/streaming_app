@@ -1,72 +1,22 @@
-import SearchBox from "@/components/SearchBox/SearchBox";
-import styles from "./page.module.css";
-import Image from "next/image";
+import MovieSection from "@/components/MovieSection/MovieSection";
+import Image from "next/image";MovieSection
 
-const Movies = () => {
+async function getData() {
+  const res = await fetch("https://assets-aivo.s3.amazonaws.com/movies.json");
+
+  if (!res.ok) {
+    throw new Error("Failed to fetch data");
+  }
+
+  return res.json();
+}
+
+const Movies = async () => {
+  const data = await getData();
+  const { entries } = data;
+
   return (
-    <div className={styles.container}>
-      <div className={styles.filters}>
-        <SearchBox />
-      </div>
-      <div className={styles.movies}>
-        <div className={styles.movie}>
-          <div className={styles.imgContainer}>
-            <Image
-              className={styles.img}
-              fill={true}
-              src="/illustration.png"
-              alt=""
-            />
-          </div>
-          <div className={styles.title}>Title Movie</div>
-        </div>
-        <div className={styles.movie}>
-          <div className={styles.imgContainer}>
-            <Image
-              className={styles.img}
-              fill={true}
-              src="/illustration.png"
-              alt=""
-            />
-          </div>
-          <div className={styles.title}>Title Movie</div>
-        </div>
-        <div className={styles.movie}>
-          <div className={styles.imgContainer}>
-            <Image
-              className={styles.img}
-              fill={true}
-              src="/illustration.png"
-              alt=""
-            />
-          </div>
-          <div className={styles.title}>Title Movie</div>
-        </div>
-        <div className={styles.movie}>
-          <div className={styles.imgContainer}>
-            <Image
-              className={styles.img}
-              fill={true}
-              src="/illustration.png"
-              alt=""
-            />
-          </div>
-          <div className={styles.title}>Title Movie</div>
-        </div>
-        <div className={styles.movie}>
-          <div className={styles.imgContainer}>
-            <Image className={styles.img} fill={true} src='/illustration.png' alt="" />
-          </div>
-          <div className={styles.title}>Title Movie</div>
-        </div>
-        <div className={styles.movie}>
-          <div className={styles.imgContainer}>
-            <Image className={styles.img} fill={true} src='/illustration.png' alt="" />
-          </div>
-          <div className={styles.title}>Title Movie</div>
-        </div>
-      </div>
-    </div>
+    <MovieSection entries={entries} />
   );
 };
 
