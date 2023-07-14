@@ -14,10 +14,11 @@ const MovieList = ({ movies }) => {
               className={styles.img}
               fill={true}
               src={movie.images["Poster Art"].url}
-              alt=""
+              alt={movie.title}
+              data-testid="movie-image"
             />
           </div>
-          <div className={styles.title}>{movie.title}</div>
+          <div className={styles.title} data-testid="movie-title">{movie.title}</div>
         </div>
       ))}
     </div>
