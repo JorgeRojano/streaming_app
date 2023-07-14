@@ -1,5 +1,5 @@
 import MovieSection from "@/components/MovieSection/MovieSection";
-import Image from "next/image";MovieSection
+import Image from "next/image";
 
 async function getData() {
   const res = await fetch("https://assets-aivo.s3.amazonaws.com/movies.json");

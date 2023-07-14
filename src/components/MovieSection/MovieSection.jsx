@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
 import MovieList from "../MovieList/MovieList";
 import SearchBox from "../SearchBox/SearchBox";
 import styles from "./moviesection.module.css";
@@ -14,6 +16,18 @@ const filterMovies = (movies, value) => {
 const MovieSection = ({ entries }) => {
   const [movies, setMovies] = useState(entries);
   const [value, setValue] = useState("");
+  const session = useSession();
+  const router = useRouter();
+
+  console.log(session)
+
+  if (session.status === "loading") {
+    return <p>Loading...</p>;
+  }
+
+  if (session.status === "unauthenticated") {
+    return router?.push("/movies/login");
+  }
 
   const handleSearch = (value) => {
     setValue(value);

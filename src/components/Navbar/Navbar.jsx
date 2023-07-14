@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import styles from "./navbar.module.css";
+import { useSession, signOut } from "next-auth/react";
 
 const links = [
   {
@@ -17,6 +18,8 @@ const links = [
 ];
 
 export default function Navbar() {
+  const session = useSession();
+
   return (
     <div className={styles.container}>
       <Link href="/" className={styles.logo}>
@@ -28,9 +31,11 @@ export default function Navbar() {
             {link.title}
           </Link>
         ))}
-        <button className={styles.logout} onClick={() => console.log('logout')}>
-          Logout
-        </button>
+        {session.status === "authenticated" && (
+          <button className={styles.logout} onClick={signOut}>
+            Logout
+          </button>
+        )}
       </div>
     </div>
   );
