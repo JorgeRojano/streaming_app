@@ -9,8 +9,6 @@ const Login = ({ url }) => {
   const session = useSession();
   const router = useRouter();
   const params = useSearchParams();
-  const [error, setError] = useState("");
-  const [success, setSuccess] = useState("");
 
   console.log(session)
 
@@ -26,7 +24,7 @@ const Login = ({ url }) => {
     <div className={styles.container}>
       <h2 className={styles.subtitle}>Please sign in to see the movies.</h2>
 
-      <form /* onSubmit={handleSubmit} */ className={styles.form}>
+      <form className={styles.form}>
         <input
           type="text"
           placeholder="Email"
@@ -40,7 +38,6 @@ const Login = ({ url }) => {
           className={styles.input}
         />
         <button className={styles.button}>Login</button>
-        {error && error}
       </form>
       <button
         onClick={() => {
@@ -51,7 +48,7 @@ const Login = ({ url }) => {
         Login with Google
       </button>
       <span className={styles.or}>- OR -</span>
-      <Link className={styles.link} href="/dashboard/register">
+      <Link className={styles.link} href="/">
         Create new account
       </Link>
     </div>

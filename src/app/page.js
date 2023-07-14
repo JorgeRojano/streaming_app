@@ -12,9 +12,6 @@ export default function Home() {
           Discover a personalized streaming experience tailored to your unique tastes.
         </p>
       </div>
-      <div className={styles.item}>
-        {/* Insert form */}
-      </div>
     </div>
   );
 }
